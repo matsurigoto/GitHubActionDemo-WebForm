@@ -34,3 +34,9 @@ jobs:
       
     - name: Run UnitTests
       run: vstest.console.exe GitHubActionDemoUnitTests/bin/Debug/GitHubActionDemoUnitTests.dll
+      
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: published_webapp
+        path: myapp
