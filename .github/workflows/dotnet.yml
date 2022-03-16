@@ -26,8 +26,8 @@ jobs:
     - name: Restore NuGet Packages
       run: nuget restore GitHubActionDemo.sln
 
-    - name: Create myapp folder
-      run: mkdir myapp
+    #- name: Create myapp folder
+    #  run: mkdir myapp
 
     - name: Build app for release
       run: msbuild GitHubActionDemo.sln /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=myapp
