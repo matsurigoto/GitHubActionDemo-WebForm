@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build_and_deploy:
 
     runs-on: windows-latest
 
@@ -35,8 +35,11 @@ jobs:
     - name: Build app for release
       run: msbuild GitHubActionDemo/GitHubActionDemo.csproj  /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
     
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v1.0.0
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
       with:
-        name: published_webapp
-        path: \published\
+        app-name: 'GitHubDemo3'
+        slot-name: 'Production'
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FC0F082B831244F2911B33342ADD133D }}
+        package: \published\
