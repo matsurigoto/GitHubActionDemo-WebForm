@@ -30,7 +30,13 @@ jobs:
       run: mkdir myapp
 
     - name: Build app for release
-      run: msbuild GitHubActionDemo.sln /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=myapp
+      run: |
+        msbuild GitHubActionDemo.sln 
+        /p:DeployOnBuild=true 
+        /p:WebPublishMethod=Package 
+        /p:PackageAsSingleFile=true 
+        /p:SkipInvalidConfigurations=true 
+        /p:PackageLocation=myapp
       
     - name: Run UnitTests
       run: vstest.console.exe GitHubActionDemoUnitTests/bin/Debug/GitHubActionDemoUnitTests.dll
