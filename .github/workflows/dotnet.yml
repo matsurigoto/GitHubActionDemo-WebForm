@@ -33,7 +33,7 @@ jobs:
       run: vstest.console.exe GitHubActionDemoUnitTests/bin/Debug/GitHubActionDemoUnitTests.dll
 
     - name: Build app for release
-      run: msbuild GitHubActionDemo.sln /t:GitHubActionDemo /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:configuration="release" /p:PackageLocation=myapp
+      run: msbuild GitHubActionDemo/GitHubActionDemo.csproj  /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
     
     - name: Deploy to Azure Web App
       id: deploy-to-webapp
@@ -42,4 +42,4 @@ jobs:
         app-name: 'GitHubDemo3'
         slot-name: 'Production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FC0F082B831244F2911B33342ADD133D }}
-        package: GitHubActionDemo\myapp
+        package: published\
