@@ -31,11 +31,11 @@ jobs:
 
     - name: Build app for release
       run: |
-        msbuild GitHubActionDemo.sln 
-        /p:DeployOnBuild=true 
-        /p:WebPublishMethod=Package 
-        /p:PackageAsSingleFile=true 
-        /p:SkipInvalidConfigurations=true 
+        msbuild GitHubActionDemo.sln \
+        /p:DeployOnBuild=true \
+        /p:WebPublishMethod=Package \
+        /p:PackageAsSingleFile=true \
+        /p:SkipInvalidConfigurations=true \
         /p:PackageLocation=myapp
       
     - name: Run UnitTests
