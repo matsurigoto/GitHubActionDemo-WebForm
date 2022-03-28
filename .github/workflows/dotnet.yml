@@ -34,9 +34,12 @@ jobs:
 
     - name: Build app for release
       run: msbuild GitHubActionDemo.sln /t:GitHubActionDemo /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:configuration="release" /p:PackageLocation=myapp
-      
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v1.0.0
+    
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
       with:
-        name: published_webapp
-        path: GitHubActionDemo\myapp
+        app-name: 'GitHubDemo3'
+        slot-name: 'Production'
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FC0F082B831244F2911B33342ADD133D }}
+        package: GitHubActionDemo\myapp
