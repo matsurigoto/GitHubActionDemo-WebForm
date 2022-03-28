@@ -42,4 +42,4 @@ jobs:
         app-name: 'GitHubDemo3'
         slot-name: 'Production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FC0F082B831244F2911B33342ADD133D }}
-        package: published\
+        package: \published\
