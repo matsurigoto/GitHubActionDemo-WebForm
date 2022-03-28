@@ -29,11 +29,14 @@ jobs:
     - name: Create myapp folder
       run: mkdir myapp
 
-    - name: Build app for release
-      run: msbuild GitHubActionDemo.sln /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=myapp
+    - name: Build app for Test
+      run: msbuild GitHubActionDemo.sln /t:GitHubActionDemoUnitTests
       
     - name: Run UnitTests
       run: vstest.console.exe GitHubActionDemoUnitTests/bin/Debug/GitHubActionDemoUnitTests.dll
+
+    - name: Build app for release
+      run: msbuild GitHubActionDemo.sln /t:GitHubActionDemo /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:configuration="release" /p:PackageLocation=myapp
       
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
