@@ -26,9 +26,6 @@ jobs:
     - name: Restore NuGet Packages
       run: nuget restore GitHubActionDemo.sln
 
-    - name: Create myapp folder
-      run: mkdir myapp
-
     - name: Build app for Test
       run: msbuild GitHubActionDemo.sln /t:GitHubActionDemoUnitTests
       
@@ -42,4 +39,4 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: published_webapp
-        path: myapp
+        path: GitHubActionDemo\myapp
