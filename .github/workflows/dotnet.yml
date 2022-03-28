@@ -31,8 +31,7 @@ jobs:
 
     - name: Build app for release
       run: |
-        msbuild GitHubActionDemo.sln \
-        /p:DeployOnBuild=true \
+        msbuild GitHubActionDemo.sln /p:DeployOnBuild=true \
         /p:WebPublishMethod=Package \
         /p:PackageAsSingleFile=true \
         /p:SkipInvalidConfigurations=true \
