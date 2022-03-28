@@ -26,8 +26,8 @@ jobs:
     - name: Restore NuGet Packages
       run: nuget restore GitHubActionDemo.sln
 
-    - name: Build app for Test
-      run: msbuild GitHubActionDemo.sln /t:GitHubActionDemoUnitTests
+    - name: Build app
+      run: msbuild GitHubActionDemo.sln
       
     - name: Run UnitTests
       run: vstest.console.exe GitHubActionDemoUnitTests/bin/Debug/GitHubActionDemoUnitTests.dll
