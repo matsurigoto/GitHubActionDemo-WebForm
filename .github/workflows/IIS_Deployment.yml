@@ -1,4 +1,4 @@
-name: Build and deploy ASP.NET (.NET Framework) app to IIS - GitHubDemo
+name: Build and deploy ASP.NET app to IIS - GitHubDemo
 
 on:
   push:
