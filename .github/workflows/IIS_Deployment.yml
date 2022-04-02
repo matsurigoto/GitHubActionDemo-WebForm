@@ -55,4 +55,4 @@ jobs:
         run: |
           %windir%\system32\inetsrv\appcmd stop sites dotnetcore-webapp
           xcopy . C:/inetpub/wwwroot/dotnetcore-webapp /s /e /y
-         %windir%\system32\inetsrv\appcmd start sites dotnetcore-webapp
+          %windir%\system32\inetsrv\appcmd start sites dotnetcore-webapp
