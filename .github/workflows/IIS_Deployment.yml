@@ -53,6 +53,6 @@ jobs:
       - name: Deploy to IIS
         shell: cmd
         run: |
-          %windir%\system32\inetsrv\appcmd stop sites dotnetcore-webapp
-          xcopy . C:/inetpub/wwwroot/dotnetcore-webapp /s /e /y
-          %windir%\system32\inetsrv\appcmd start sites dotnetcore-webapp
+          %windir%\system32\inetsrv\appcmd stop sites dotnet-webapp
+          xcopy . C:/inetpub/wwwroot/dotnet-webapp /s /e /y
+          %windir%\system32\inetsrv\appcmd start sites dotnet-webapp
