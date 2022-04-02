@@ -54,5 +54,5 @@ jobs:
         shell: cmd
         run: |
           %windir%\system32\inetsrv\appcmd stop sites dotnet-webapp
-          xcopy . C:/inetpub/wwwroot/dotnet-webapp /s /e /y
+          xcopy "." "C:/inetpub/wwwroot/dotnet-webapp" /s /e /y
           %windir%\system32\inetsrv\appcmd start sites dotnet-webapp
